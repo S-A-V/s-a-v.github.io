@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAV</title>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .jumbotron h1 {
+        background-position: center;
+        background-image: url("https://www.apple.com.cn/v/macbook-pro-13/c/images/overview/display/display_screen__d6xv8l5wqtua_medium.jpg");
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      .iframe {
+        display: block;
+        margin: auto;
+        width: 100%;
+      }
+
+      .thumbnail {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Hello</h1>
+        <p><span id="name"></span>，爱你哟</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <iframe
+        class="iframe"
+        frameborder="no"
+        border="0"
+        marginwidth="0"
+        marginheight="0"
+        width="330"
+        height="450"
+        src="https://music.163.com/outchain/player?type=0&id=3191877284&auto=1&height=430"
+      >
+      </iframe>
+    </div>
+
+    <div class="container hidden">
+      <div class="text-center">
+        <span class="thumbnail">
+          <img
+            src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1045849190,223240674&fm=26&gp=0.jpg"
+            alt=""
+            srcset=""
+          />
+        </span>
+      </div>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+      (function () {
+        const formatParams = () => {
+          return location.search
+            .slice(1)
+            .split("&")
+            .reduce((result, item) => {
+              const [k, v] = item.split("=");
+              result[k] = v;
+              return result;
+            }, {});
+        };
+
+        const { name } = formatParams();
+        document.getElementById("name").textContent = name
+          ? decodeURI(name)
+          : "";
+      })();
+    </script>
+  </body>
+</html>
